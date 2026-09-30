@@ -1,0 +1,113 @@
+.section {
+  padding: clamp(36px, 5vw, 56px) 0;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.blurb {
+  color: var(--muted);
+  font-size: 14.5px;
+  margin-bottom: 22px;
+  max-width: 480px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.viewBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(20, 10, 25, 0.55);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: var(--panel);
+  border-radius: 18px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 760px;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.4);
+  animation: pop 0.18s ease;
+}
+
+@keyframes pop {
+  from { transform: scale(0.96); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.modalBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 10px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--pink-pale);
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.fileLabel {
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  color: var(--pink-deep);
+  margin-left: 6px;
+  flex: 1;
+}
+
+.closeBtn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--pink-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.closeBtn:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+.frame {
+  width: 100%;
+  height: 72vh;
+  border: none;
+  display: block;
+}
+
+@media (max-width: 700px) {
+  .frame {
+    height: 60vh;
+  }
+}

@@ -1,0 +1,64 @@
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding: 14px 0;
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
+  backdrop-filter: blur(8px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: clamp(16px, 3vw, 19px);
+  color: var(--pink-deep);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--pink);
+  box-shadow: 0 0 8px var(--pink);
+  flex-shrink: 0;
+}
+
+.pill {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 5px;
+  display: flex;
+  gap: 2px;
+}
+
+.tab {
+  font-weight: 600;
+  font-size: clamp(11px, 2vw, 13px);
+  padding: 8px clamp(10px, 2.5vw, 15px);
+  border-radius: 999px;
+  color: var(--muted);
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.tabActive {
+  background: var(--pink);
+  color: #fff;
+}

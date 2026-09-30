@@ -1,0 +1,57 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0 40px;
+  margin-top: 20px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.brand {
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--pink-deep);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.led {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--pink);
+}
+
+.links {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--muted);
+  transition: color 0.15s ease;
+}
+
+.links a:hover {
+  color: var(--pink-deep);
+}
+
+.copyright {
+  font-family: var(--font-mono), monospace;
+  font-size: 10.5px;
+  color: var(--dim);
+  text-align: center;
+  margin-top: 22px;
+}

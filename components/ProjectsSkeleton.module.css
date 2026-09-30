@@ -1,0 +1,64 @@
+.section {
+  padding: clamp(36px, 5vw, 56px) 0;
+}
+
+.header {
+  margin-bottom: 24px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.tabPulse {
+  width: 90px;
+  height: 34px;
+  border-radius: 999px;
+  background: var(--border);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 760px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--border);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.body {
+  padding: 20px;
+}
+
+.line {
+  height: 12px;
+  border-radius: 6px;
+  background: var(--border);
+  animation: pulse 1.4s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
