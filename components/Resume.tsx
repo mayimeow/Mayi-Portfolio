@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Resume.module.css";
 
 function EyeIcon() {
@@ -22,16 +22,15 @@ function CloseIcon() {
 }
 
 export default function Resume() {
-  var openState = useState(false);
-  var isOpen = openState[0];
-  var setIsOpen = openState[1];
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(function () {
     if (!isOpen) return;
 
     document.body.style.overflow = "hidden";
 
-    function onKeyDown(e) {
+    // 1. Added KeyboardEvent type here
+    function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") setIsOpen(false);
     }
     window.addEventListener("keydown", onKeyDown);
@@ -67,7 +66,8 @@ export default function Resume() {
 
       {isOpen && (
         <div className={styles.overlay} onClick={function () { setIsOpen(false); }}>
-          <div className={styles.modal} onClick={function (e) { e.stopPropagation(); }}>
+          {/* 2. Added React.MouseEvent<HTMLDivElement> type here */}
+          <div className={styles.modal} onClick={function (e: React.MouseEvent<HTMLDivElement>) { e.stopPropagation(); }}>
             <div className={styles.modalBar}>
               <span className={styles.dot} style={{ background: "var(--pink)" }}></span>
               <span className={styles.dot} style={{ background: "var(--lav)" }}></span>

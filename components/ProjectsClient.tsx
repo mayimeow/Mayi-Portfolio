@@ -1,12 +1,33 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import Image from "next/image";
 import styles from "./Projects.module.css";
 
-var categories = ["All", "Excel", "Vercel Systems", "Apps", "Data Studio", "Power BI"];
+// 1. Define the types for your project objects and props
+interface Project {
+  id: string | number;
+  category: string;
+  title: string;
+  is_placeholder?: boolean;
+  tags?: string;
+  image_url?: string;
+  description?: string;
+  coming_soon?: boolean;
+  metric?: string;
+  live_url?: string;
+  repo_url?: string;
+}
 
-var categoryColors = {
+interface ProjectsClientProps {
+  projects?: Project[];
+  error?: string | null;
+}
+
+const categories = ["All", "Excel", "Vercel Systems", "Apps", "Data Studio", "Power BI"];
+
+// 2. Add Record types to dictionaries to fix the indexing errors
+const categoryColors: Record<string, { bg: string; fg: string }> = {
   "Excel": { bg: "var(--pink-pale)", fg: "var(--pink-deep)" },
   "Vercel Systems": { bg: "var(--lav-pale)", fg: "var(--lav)" },
   "Apps": { bg: "#FFF3DC", fg: "#9A6A1F" },
@@ -52,7 +73,7 @@ function BarIcon() {
   );
 }
 
-var categoryIcons = {
+const categoryIcons: Record<string, ReactNode> = {
   "Excel": <GridIcon />,
   "Vercel Systems": <TriangleIcon />,
   "Apps": <PhoneIcon />,
@@ -60,15 +81,15 @@ var categoryIcons = {
   "Power BI": <BarIcon />,
 };
 
-export default function ProjectsClient(props) {
-  var projects = props.projects || [];
-  var error = props.error;
+// 3. Type the component props
+export default function ProjectsClient(props: ProjectsClientProps) {
+  const projects = props.projects || [];
+  const error = props.error;
 
-  var state = useState("All");
-  var active = state[0];
-  var setActive = state[1];
+  const [active, setActive] = useState<string>("All");
 
-  var visible = active === "All" ? projects : projects.filter(function (p) {
+  // 4. Type the mapping/filtering parameters
+  const visible = active === "All" ? projects : projects.filter(function (p: Project) {
     return p.category === active;
   });
 
@@ -83,8 +104,8 @@ export default function ProjectsClient(props) {
         {error && <p>Could not load projects: {error}</p>}
 
         <div className={styles.tabs}>
-          {categories.map(function (cat) {
-            var isActive = active === cat;
+          {categories.map(function (cat: string) {
+            const isActive = active === cat;
             return (
               <button
                 key={cat}
@@ -98,11 +119,11 @@ export default function ProjectsClient(props) {
         </div>
 
         <div className={styles.grid}>
-          {visible.map(function (p) {
-            var colors = categoryColors[p.category] || { bg: "var(--pink-pale)", fg: "var(--pink-deep)" };
-            var isPlaceholder = !!p.is_placeholder;
-            var cardClass = styles.card + (isPlaceholder ? " " + styles.cardPlaceholder : "");
-            var tagList = p.tags ? p.tags.split(",").map(function (t) { return t.trim(); }) : [];
+          {visible.map(function (p: Project) {
+            const colors = categoryColors[p.category] || { bg: "var(--pink-pale)", fg: "var(--pink-deep)" };
+            const isPlaceholder = !!p.is_placeholder;
+            const cardClass = styles.card + (isPlaceholder ? " " + styles.cardPlaceholder : "");
+            const tagList = p.tags ? p.tags.split(",").map(function (t: string) { return t.trim(); }) : [];
 
             return (
               <div key={p.id} className={cardClass}>
@@ -141,7 +162,7 @@ export default function ProjectsClient(props) {
                   {p.description && <div className={styles.desc}>{p.description}</div>}
                   {tagList.length > 0 && (
                     <div className={styles.tags}>
-                      {tagList.map(function (t) {
+                      {tagList.map(function (t: string) {
                         return <span key={t} className={styles.tag}>{t}</span>;
                       })}
                     </div>

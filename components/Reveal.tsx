@@ -1,19 +1,21 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, ReactNode } from "react";
 
-export default function Reveal(props) {
-  var children = props.children;
-  var ref = useRef(null);
-  var state = useState(false);
-  var visible = state[0];
-  var setVisible = state[1];
+interface RevealProps {
+  children: ReactNode;
+}
+
+export default function Reveal(props: RevealProps) {
+  const children = props.children;
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(function () {
-    var el = ref.current;
+    const el = ref.current;
     if (!el) return;
 
-    var observer = new IntersectionObserver(
+    const observer = new IntersectionObserver(
       function (entries) {
         entries.forEach(function (entry) {
           if (entry.isIntersecting) {
