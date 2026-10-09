@@ -87,7 +87,7 @@ export default function Hero() {
               <a href="/resume.pdf" className="btn">
                 Resume
               </a>
-              <a href="https://github.com/yourusername" className="btn">
+              <a href="https://github.com/mayimeow" className="btn">
                 GitHub
               </a>
             </div>
